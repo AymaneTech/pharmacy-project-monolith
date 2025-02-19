@@ -30,18 +30,10 @@ jobs:
 
       - name: Package the appllication
         run: cd backend && mvn clean package -DskipTests
-  
-  test_and_report:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Run Tests
-        run: cd backend && mvn clean test
 
+      - name: Run tests
+        run: cd backend && mvn test
+ 
       - name: Upload Test Reports
         uses: dorny/test-reporter@v1
         if: success()
