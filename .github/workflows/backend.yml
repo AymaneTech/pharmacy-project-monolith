@@ -8,6 +8,10 @@ on:
       - 'backend/**'
       - '.github/workflows/backend.yml'
 
+permissions:
+  checks: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
