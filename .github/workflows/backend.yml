@@ -39,5 +39,5 @@ jobs:
         if: success()
         with:
           name: "Unit Test Results"
-          path: "backend/**/target/surefire-reports/*.xml"
+          path: "backend/target/surefire-reports/*.xml"
           reporter: java-junit
