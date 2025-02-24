@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+app:
+  open-api:
+    server:
+      url: http://localhost:8081
+      description: API for restaurant management solutions
+    info:
+      title: Restaurant management solutions
+      version: 1.0.0
+      description: |
+        still need to provide desription for this
+      contact:
+        name: Aymane El Maini
+        email: elmainiaymane03@gmail.com
+        url: https://aymaneelmaini.vercel.app
+
+logging:
+  level:
+    org.springframework.jdbc: debug
