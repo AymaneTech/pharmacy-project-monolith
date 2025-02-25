@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -14,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Role {
+public class Role implements Serializable {
 
     @EmbeddedId
     private RoleId id;

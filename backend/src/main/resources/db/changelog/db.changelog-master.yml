@@ -13,3 +13,5 @@ databaseChangeLog:
       file: db/changelog/migrations/db.changelog-3.0.0.sql
   - include:
       file: db/changelog/migrations/db.changelog-4.0.0.sql
+  - include:
+      file: db/changelog/initial-data/users-data.sql
