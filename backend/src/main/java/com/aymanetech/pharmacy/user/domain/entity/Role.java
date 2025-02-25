@@ -17,7 +17,6 @@ import java.util.List;
 public class Role {
 
     @EmbeddedId
-    @AttributeOverride(name = "value", column = @Column(name = "id"))
     private RoleId id;
 
     private String name;

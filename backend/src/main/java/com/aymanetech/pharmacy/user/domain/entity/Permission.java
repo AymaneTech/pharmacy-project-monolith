@@ -17,7 +17,6 @@ import java.util.List;
 public class Permission {
 
     @EmbeddedId
-    @AttributeOverride(name = "value", column = @Column(name = "id"))
     private PermissionId id;
 
     private String name;

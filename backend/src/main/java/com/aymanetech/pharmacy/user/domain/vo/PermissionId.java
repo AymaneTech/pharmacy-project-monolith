@@ -1,4 +1,6 @@
 package com.aymanetech.pharmacy.user.domain.vo;
 
-public record PermissionId(Long value) {
+import jakarta.persistence.Column;
+
+public record PermissionId(@Column(name = "id") Long value) {
 }

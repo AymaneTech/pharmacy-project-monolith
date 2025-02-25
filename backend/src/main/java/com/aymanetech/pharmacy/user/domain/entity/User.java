@@ -17,7 +17,6 @@ import lombok.Setter;
 public class User {
 
     @EmbeddedId
-    @AttributeOverride(name = "value", column = @Column(name = "id"))
     private UserId id;
 
     @Embedded
