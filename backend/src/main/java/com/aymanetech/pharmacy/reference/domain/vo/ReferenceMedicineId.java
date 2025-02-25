@@ -1,4 +1,4 @@
-package com.aymanetech.pharmacy.reference.domain;
+package com.aymanetech.pharmacy.reference.domain.vo;
 
 import jakarta.persistence.Column;
 

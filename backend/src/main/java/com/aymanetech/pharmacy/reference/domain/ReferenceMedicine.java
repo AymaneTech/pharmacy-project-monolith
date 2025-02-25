@@ -1,5 +1,8 @@
 package com.aymanetech.pharmacy.reference.domain;
 
+import com.aymanetech.pharmacy.reference.domain.vo.DosageUnit;
+import com.aymanetech.pharmacy.reference.domain.vo.Packaging;
+import com.aymanetech.pharmacy.reference.domain.vo.ReferenceMedicineId;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
