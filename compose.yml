@@ -13,7 +13,6 @@ services:
       - "${POSTGRES_PORT}:${POSTGRES_PORT}"
     volumes:
       - db_data:/var/lib/postgresql/data
-    command: [ "postgres", "-p", "5433" ]
 
 volumes:
   db_data:
