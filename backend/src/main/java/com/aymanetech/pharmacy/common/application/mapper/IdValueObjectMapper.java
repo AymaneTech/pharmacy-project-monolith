@@ -5,7 +5,7 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface IdValueObjectMapper {
 
-    default Long valueObjectToUuid(Object vo) {
+    default Long valueObjectToLong(Object vo) {
         if (vo == null)
             return null;
 
