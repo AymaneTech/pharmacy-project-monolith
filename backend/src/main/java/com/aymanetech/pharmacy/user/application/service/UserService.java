@@ -9,7 +9,7 @@ import com.aymanetech.pharmacy.user.domain.vo.UserId;
 import java.util.List;
 
 public interface UserService {
-    UserRequestDto registerNewUser(UserRegistrationRequestDto request);
+    UserResponseDto registerNewUser(UserRegistrationRequestDto request);
 
     UserResponseDto login(UserLoginRequestDto request);
 

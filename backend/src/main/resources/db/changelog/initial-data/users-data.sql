@@ -74,3 +74,6 @@ VALUES ('John', 'Smith', 'john.smith@pharmacy.com', '$2a$10$yTST5iA.EMsH1x5geNV5
         '$2a$10$uC1K98JoxOwVRPH8eTu6Q.zf.SHpZ7AeMVgFw9VLYINcE04ULsFuW', 5, 'Inventory Manager'),
        ('Lisa', 'Martinez', 'lisa.martinez@pharmacy.com',
         '$2a$10$mPQvV/W12P3yCXeKn7RTJeeNJRLnPnDEqeKm0txRiiUmA/6CL6Ykm', 2, 'Pharmacist');
+
+UPDATE phar_users
+SET dtype = 'Employee';

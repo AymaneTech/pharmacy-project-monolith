@@ -16,6 +16,11 @@ public interface UserMapper extends BaseMapper<User, UserRequestDto, UserRespons
     @Mapping(source = "lastName", target = "name.lastName")
     User toEntity(UserRequestDto dto);
 
+    @Override
+    @Mapping(target = "firstName", source = "name.firstName")
+    @Mapping(target = "lastName", source = "name.lastName")
+    UserResponseDto toResponseDto(User user);
+
     @Mapping(source = "firstName", target = "name.firstName")
     @Mapping(source = "lastName", target = "name.lastName")
     User toEntity(UserRegistrationRequestDto dto);

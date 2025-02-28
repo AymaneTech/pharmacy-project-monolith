@@ -16,8 +16,8 @@ import java.util.List;
 @ApplicationService
 @RequiredArgsConstructor
 public class DefaultRoleService implements RoleService {
-    private RoleRepository repository;
-    private RoleMapper mapper;
+    private final RoleRepository repository;
+    private final RoleMapper mapper;
 
     @Override
     public RoleResponseDto createNewRole(RoleRequestDto request) {

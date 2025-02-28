@@ -8,10 +8,10 @@ import jakarta.validation.constraints.NotNull;
 /**
  * Response DTO for {@link com.aymanetech.pharmacy.user.domain.entity.User}
  */
-public record UserResponseDto(@NotBlank String firstName,
+public record UserResponseDto(@NotNull Long id,
+                              @NotBlank String firstName,
                               @NotBlank String lastName,
                               @NotBlank String email,
-                              @NotBlank String password,
                               @NotNull NestedRole role
-                              ) {
+) {
 }
