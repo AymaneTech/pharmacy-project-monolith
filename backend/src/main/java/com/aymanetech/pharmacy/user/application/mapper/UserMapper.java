@@ -1,6 +1,7 @@
 package com.aymanetech.pharmacy.user.application.mapper;
 
 import com.aymanetech.pharmacy.common.application.mapper.BaseMapper;
+import com.aymanetech.pharmacy.user.application.dto.request.UserRegistrationRequestDto;
 import com.aymanetech.pharmacy.user.application.dto.request.UserRequestDto;
 import com.aymanetech.pharmacy.user.application.dto.response.UserResponseDto;
 import com.aymanetech.pharmacy.user.domain.entity.User;
@@ -14,4 +15,8 @@ public interface UserMapper extends BaseMapper<User, UserRequestDto, UserRespons
     @Mapping(source = "firstName", target = "name.firstName")
     @Mapping(source = "lastName", target = "name.lastName")
     User toEntity(UserRequestDto dto);
+
+    @Mapping(source = "firstName", target = "name.firstName")
+    @Mapping(source = "lastName", target = "name.lastName")
+    User toEntity(UserRegistrationRequestDto dto);
 }

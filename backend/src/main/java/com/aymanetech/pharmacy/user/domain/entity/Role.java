@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "phar_roles")
@@ -28,5 +30,22 @@ public class Role implements Serializable {
             joinColumns = @JoinColumn(name = "permission_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private List<Permission> permissions;
+    private Set<Permission> permissions = new HashSet<>();
+
+    public void assignPermission(Permission permission) {
+        permission.assignRole(this);
+        permissions.add(permission);
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == null || getClass() != object.getClass()) return false;
+        Role role = (Role) object;
+        return Objects.equals(name, role.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }

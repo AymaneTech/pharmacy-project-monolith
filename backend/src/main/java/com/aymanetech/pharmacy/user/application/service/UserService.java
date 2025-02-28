@@ -3,19 +3,21 @@ package com.aymanetech.pharmacy.user.application.service;
 import com.aymanetech.pharmacy.user.application.dto.request.UserLoginRequestDto;
 import com.aymanetech.pharmacy.user.application.dto.request.UserRegistrationRequestDto;
 import com.aymanetech.pharmacy.user.application.dto.request.UserRequestDto;
+import com.aymanetech.pharmacy.user.application.dto.response.UserResponseDto;
+import com.aymanetech.pharmacy.user.domain.vo.UserId;
 
 import java.util.List;
 
 public interface UserService {
     UserRequestDto registerNewUser(UserRegistrationRequestDto request);
 
-    UserRequestDto login(UserLoginRequestDto request);
+    UserResponseDto login(UserLoginRequestDto request);
 
-    UserRequestDto findUserById(Long id);
+    UserResponseDto findUserById(UserId id);
 
-    List<UserRequestDto> findAllUsers();
+    List<UserResponseDto> findAllUsers();
 
-    UserRequestDto updateUser(Long id, UserRequestDto request);
+    UserResponseDto updateUser(UserId id, UserRequestDto request);
 
-    void deleteUser(Long id);
+    void deleteUser(UserId id);
 }
