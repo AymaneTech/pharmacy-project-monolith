@@ -1,6 +1,6 @@
 package com.aymanetech.pharmacy;
 
-import com.aymanetech.pharmacy.security.domain.JwtConfig;
+import com.aymanetech.pharmacy.security.JwtConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

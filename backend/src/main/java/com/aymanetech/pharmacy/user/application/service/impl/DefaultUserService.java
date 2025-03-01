@@ -2,7 +2,7 @@ package com.aymanetech.pharmacy.user.application.service.impl;
 
 import com.aymanetech.pharmacy.common.application.service.ApplicationService;
 import com.aymanetech.pharmacy.common.exception.ResourceNotFoundException;
-import com.aymanetech.pharmacy.security.domain.TokenService;
+import com.aymanetech.pharmacy.security.TokenService;
 import com.aymanetech.pharmacy.user.application.dto.request.UserLoginRequestDto;
 import com.aymanetech.pharmacy.user.application.dto.request.UserRegistrationRequestDto;
 import com.aymanetech.pharmacy.user.application.dto.request.UserRequestDto;

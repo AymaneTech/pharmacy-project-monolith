@@ -1,4 +1,4 @@
-package com.aymanetech.pharmacy.security.domain;
+package com.aymanetech.pharmacy.security;
 
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.jwk.OctetSequenceKey;

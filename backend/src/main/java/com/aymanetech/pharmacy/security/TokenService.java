@@ -1,4 +1,4 @@
-package com.aymanetech.pharmacy.security.domain;
+package com.aymanetech.pharmacy.security;
 
 import com.aymanetech.pharmacy.user.domain.entity.User;
 import com.nimbusds.jose.JOSEException;
