@@ -36,9 +36,9 @@ public class DefaultUserService implements UserService {
     public UserResponseDto registerNewUser(UserRegistrationRequestDto request) {
         var defaultRole = roleService.findRoleEntityById(RoleId.of(1L));
 
-        var user = mapper.toEntity(request)
-                .setPassword(passwordEncoder.encode(request.password()))
-                .setRole(defaultRole);
+        var user = mapper.toEntity(request);
+        user.setPassword(passwordEncoder.encode(request.password()));
+        user.setRole(defaultRole);
 
         var savedUser = repository.save(user);
         return mapper.toResponseDto(savedUser);
