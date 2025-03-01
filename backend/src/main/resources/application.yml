@@ -21,7 +21,7 @@ spring:
 app:
   security:
     jwt:
-      secretKey: JTtjH4LH2ykrPgsqh1cU2DJ7xzs3SHJXgRTNH2wA3ayONMmtnq4FQwZVHnEAg1uynm+t/UVGSIfKc5+mV0Ez8A==
+      secretKey: ${JWT_SECRET_KEY}
       expirationTime: 3600
       algorithm: HS256
 
