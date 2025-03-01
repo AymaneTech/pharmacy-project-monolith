@@ -19,6 +19,12 @@ spring:
       jdbc-enabled: true
 
 app:
+  security:
+    jwt:
+      secretKey: ${JWT_SECRET_KEY}
+      expirationTime: 3600
+      algorithm: HS256
+
   open-api:
     server:
       url: http://localhost:8081
@@ -36,3 +42,4 @@ app:
 logging:
   level:
     org.springframework.jdbc: debug
+    org.springframework.security: trace
