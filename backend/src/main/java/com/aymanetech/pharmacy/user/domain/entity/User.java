@@ -7,8 +7,13 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "phar_users")
@@ -18,7 +23,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User implements Serializable {
+public class User implements UserDetails, Serializable {
 
     @EmbeddedId
     private UserId id;
@@ -35,4 +40,14 @@ public class User implements Serializable {
 
     @ManyToOne
     private Role role;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.getName()));
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
 }

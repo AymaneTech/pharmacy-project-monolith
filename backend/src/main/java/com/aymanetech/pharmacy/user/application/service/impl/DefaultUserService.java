@@ -2,19 +2,23 @@ package com.aymanetech.pharmacy.user.application.service.impl;
 
 import com.aymanetech.pharmacy.common.application.service.ApplicationService;
 import com.aymanetech.pharmacy.common.exception.ResourceNotFoundException;
+import com.aymanetech.pharmacy.security.domain.TokenService;
 import com.aymanetech.pharmacy.user.application.dto.request.UserLoginRequestDto;
 import com.aymanetech.pharmacy.user.application.dto.request.UserRegistrationRequestDto;
 import com.aymanetech.pharmacy.user.application.dto.request.UserRequestDto;
+import com.aymanetech.pharmacy.user.application.dto.response.AuthenticationResponseDto;
 import com.aymanetech.pharmacy.user.application.dto.response.UserResponseDto;
 import com.aymanetech.pharmacy.user.application.mapper.UserMapper;
 import com.aymanetech.pharmacy.user.application.service.RoleService;
 import com.aymanetech.pharmacy.user.application.service.UserService;
-import com.aymanetech.pharmacy.user.domain.entity.Role;
 import com.aymanetech.pharmacy.user.domain.entity.User;
 import com.aymanetech.pharmacy.user.domain.repository.UserRepository;
 import com.aymanetech.pharmacy.user.domain.vo.RoleId;
 import com.aymanetech.pharmacy.user.domain.vo.UserId;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
@@ -24,33 +28,35 @@ public class DefaultUserService implements UserService {
     private final UserRepository repository;
     private final RoleService roleService;
     private final UserMapper mapper;
+    private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
+    private final TokenService tokenService;
 
     @Override
     public UserResponseDto registerNewUser(UserRegistrationRequestDto request) {
-        Role defaultRole = roleService.findRoleEntityById(RoleId.of(1L));
+        var defaultRole = roleService.findRoleEntityById(RoleId.of(1L));
 
-        User user = mapper.toEntity(request)
-                .setPassword("hash password")
+        var user = mapper.toEntity(request)
+                .setPassword(passwordEncoder.encode(request.password()))
                 .setRole(defaultRole);
 
-        User savedUser = repository.save(user);
+        var savedUser = repository.save(user);
         return mapper.toResponseDto(savedUser);
     }
 
     @Override
-    public UserResponseDto login(UserLoginRequestDto request) {
-        User user = repository.findByEmail(request.email())
-                .orElseThrow(() -> new ResourceNotFoundException(String.format("user with email %s not found", request.email())));
-        // todo handle registration properly
-
-        return mapper.toResponseDto(user);
+    public AuthenticationResponseDto login(UserLoginRequestDto request) {
+        var authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(request.email(), request.password()));
+        var token = tokenService.generateToken(authentication);
+        return new AuthenticationResponseDto(token);
     }
 
     @Override
     public UserResponseDto findUserById(UserId id) {
         return repository.findById(id)
                 .map(mapper::toResponseDto)
-                .orElseThrow(() -> new ResourceNotFoundException(id.value()));
+                .orElseThrow(() -> new ResourceNotFoundException("User", id.value()));
     }
 
     @Override
@@ -63,27 +69,26 @@ public class DefaultUserService implements UserService {
 
     @Override
     public UserResponseDto updateUser(UserId id, UserRequestDto request) {
-        User user = findUserEntityById(id);
+        // todo: use another dto for this to ignore password here
+        var user = findUserEntityById(id);
+        var role = roleService.findRoleEntityById(RoleId.of(request.roleId()));
+
         mapper.updateEntity(user, request);
+        user.setRole(role);
 
-        if (request.roleId() != null) {
-            Role role = roleService.findRoleEntityById(RoleId.of(request.roleId()));
-            user.setRole(role);
-        }
-
-        User updatedUser = repository.save(user);
+        var updatedUser = repository.save(user);
         return mapper.toResponseDto(updatedUser);
     }
 
     @Override
     public void deleteUser(UserId id) {
         if (!repository.existsById(id))
-            throw new ResourceNotFoundException(id.value());
+            throw new ResourceNotFoundException("User", id.value());
         repository.deleteById(id);
     }
 
     private User findUserEntityById(UserId id) {
         return repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(id.value()));
+                .orElseThrow(() -> new ResourceNotFoundException("Role", id.value()));
     }
 }

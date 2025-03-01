@@ -30,7 +30,7 @@ public class DefaultPermissionService implements PermissionService {
     public PermissionResponseDto findPermissionById(final PermissionId id) {
         return repository.findById(id)
                 .map(mapper::toResponseDto)
-                .orElseThrow(() -> new ResourceNotFoundException(id.value()));
+                .orElseThrow(() -> new ResourceNotFoundException("Permission", id.value()));
     }
 
     @Override
@@ -49,11 +49,11 @@ public class DefaultPermissionService implements PermissionService {
 
     @Override
     public void deletePermission(final PermissionId id) {
-        if (!repository.existsById(id)) throw new ResourceNotFoundException(id.value());
+        if (!repository.existsById(id)) throw new ResourceNotFoundException("Permission", id.value());
         repository.deleteById(id);
     }
 
     private Permission findPermissionEntityById(final PermissionId id) {
-        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id.value()));
+        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Permission", id.value()));
     }
 }

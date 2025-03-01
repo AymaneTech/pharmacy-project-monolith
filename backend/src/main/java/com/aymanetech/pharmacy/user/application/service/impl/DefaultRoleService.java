@@ -30,7 +30,7 @@ public class DefaultRoleService implements RoleService {
     public RoleResponseDto findRoleById(RoleId id) {
         return repository.findById(id)
                 .map(mapper::toResponseDto)
-                .orElseThrow(() -> new ResourceNotFoundException(id.value()));
+                .orElseThrow(() -> new ResourceNotFoundException("Role", id.value()));
     }
 
     @Override
@@ -49,13 +49,13 @@ public class DefaultRoleService implements RoleService {
 
     @Override
     public void deleteRole(RoleId id) {
-        if (!repository.existsById(id)) throw new ResourceNotFoundException(id.value());
+        if (!repository.existsById(id)) throw new ResourceNotFoundException("Role", id.value());
         repository.deleteById(id);
     }
 
     @Override
     public Role findRoleEntityById(RoleId id) {
         return repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(id.value()));
+                .orElseThrow(() -> new ResourceNotFoundException("Role", id.value()));
     }
 }

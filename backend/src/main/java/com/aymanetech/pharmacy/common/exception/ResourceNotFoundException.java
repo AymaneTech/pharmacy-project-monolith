@@ -1,11 +1,15 @@
 package com.aymanetech.pharmacy.common.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
-    public ResourceNotFoundException(Long id) {
-        super("Resource with id " + id + " not found");
+    public ResourceNotFoundException(String entity, Long id) {
+        super(entity + " with id " + id + " not found");
     }
 
-    public ResourceNotFoundException(String message){
+    public ResourceNotFoundException(String entity, Integer id) {
+        super(entity + " with id " + id + " not found");
+    }
+
+    public ResourceNotFoundException(String message) {
         super(message);
     }
 }

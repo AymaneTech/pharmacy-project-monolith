@@ -35,11 +35,11 @@ public class DefaultRolePermissionService implements RolePermissionService {
 
     private Permission findPermissionById(RoleId roleId, PermissionId permissionId) {
         return permissionRepository.findById(permissionId)
-                .orElseThrow(() -> new ResourceNotFoundException(roleId.value()));
+                .orElseThrow(() -> new ResourceNotFoundException("Role", roleId.value()));
     }
 
     private Role findRoleById(RoleId roleId) {
         return roleRepository.findById(roleId)
-                .orElseThrow(() -> new ResourceNotFoundException(roleId.value()));
+                .orElseThrow(() -> new ResourceNotFoundException("Role", roleId.value()));
     }
 }

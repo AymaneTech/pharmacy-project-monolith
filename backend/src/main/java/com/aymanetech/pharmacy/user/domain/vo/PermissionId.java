@@ -1,8 +1,9 @@
 package com.aymanetech.pharmacy.user.domain.vo;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
 
-public record PermissionId(@Column(name = "id") Long value) {
+public record PermissionId(@Column(name = "id") @GeneratedValue Long value) {
     public static PermissionId of(Integer id) {
         return new PermissionId(id.longValue());
     }
