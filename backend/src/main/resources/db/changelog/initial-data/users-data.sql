@@ -1,24 +1,24 @@
 -- Insert roles
 INSERT INTO phar_roles (name)
-VALUES ('Admin'),
-       ('Pharmacist'),
-       ('Pharmacy Technician'),
-       ('Cashier'),
-       ('Inventory Manager');
+VALUES ('ROLE_ADMIN'),
+       ('ROLE_PHARMACIST'),
+       ('ROLE_PHARMACY_TECHNICIAN'),
+       ('ROLE_CASHIER'),
+       ('ROLE_INVENTORY MANAGER');
 
 -- Insert permissions
 INSERT INTO phar_permissions (name)
-VALUES ('manage_users'),
-       ('view_users'),
-       ('dispense_medication'),
-       ('manage_inventory'),
-       ('view_inventory'),
-       ('process_sales'),
-       ('view_sales'),
-       ('manage_prescriptions'),
-       ('view_prescriptions'),
-       ('manage_reports'),
-       ('view_reports');
+VALUES ('MANAGE_USERS'),
+       ('VIEW_USERS'),
+       ('DISPENSE_MEDICATION'),
+       ('MANAGE_INVENTORY'),
+       ('VIEW_INVENTORY'),
+       ('PROCESS_SALES'),
+       ('VIEW_SALES'),
+       ('MANAGE_PRESCRIPTIONS'),
+       ('VIEW_PRESCRIPTIONS'),
+       ('MANAGE_REPORTS'),
+       ('VIEW_REPORTS');
 
 -- Associate permissions with roles
 -- Admin has all permissions
@@ -30,26 +30,26 @@ FROM phar_permissions;
 INSERT INTO phar_role_permissions (role_id, permission_id)
 SELECT 2, id
 FROM phar_permissions
-WHERE name IN ('view_users', 'dispense_medication', 'view_inventory', 'manage_prescriptions',
-               'view_prescriptions', 'view_reports');
+WHERE name IN ('VIEW_USERS', 'DISPENSE_MEDICATION', 'VIEW_INVENTORY', 'MANAGE_PRESCRIPTIONS',
+               'VIEW_PRESCRIPTIONS', 'VIEW_REPORTS');
 
 -- Pharmacy Technician permissions
 INSERT INTO phar_role_permissions (role_id, permission_id)
 SELECT 3, id
 FROM phar_permissions
-WHERE name IN ('view_inventory', 'view_prescriptions', 'process_sales', 'view_sales');
+WHERE name IN ('VIEW_INVENTORY', 'VIEW_PRESCRIPTIONS', 'PROCESS_SALES', 'VIEW_SALES');
 
 -- Cashier permissions
 INSERT INTO phar_role_permissions (role_id, permission_id)
 SELECT 4, id
 FROM phar_permissions
-WHERE name IN ('process_sales', 'view_sales');
+WHERE name IN ('PROCESS_SALES', 'VIEW_SALES');
 
 -- Inventory Manager permissions
 INSERT INTO phar_role_permissions (role_id, permission_id)
 SELECT 5, id
 FROM phar_permissions
-WHERE name IN ('manage_inventory', 'view_inventory', 'view_reports');
+WHERE name IN ('MANAGE_INVENTORY', 'VIEW_INVENTORY', 'VIEW_REPORTS');
 
 -- Insert users (with hashed passwords - these are just placeholders,
 -- in a real system you would use proper password hashing)
