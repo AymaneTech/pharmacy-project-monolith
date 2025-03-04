@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "phar_permissions")
+@Table(name = "permissions")
 
 @Getter
 @Setter

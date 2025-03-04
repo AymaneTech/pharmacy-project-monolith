@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "phar_roles")
+@Table(name = "roles")
 
 @Getter
 @Setter
@@ -26,7 +26,7 @@ public class Role implements Serializable {
 
     @ManyToMany
     @JoinTable(
-            name = "phar_role_permissions",
+            name = "role_permissions",
             joinColumns = @JoinColumn(name = "permission_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
