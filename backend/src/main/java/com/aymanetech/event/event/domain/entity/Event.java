@@ -46,6 +46,7 @@ public class Event {
     private Category category;
 
     @ManyToOne
+    @JoinColumn(name = "organizer_id")
     private User organiser;
 
     @Embedded
