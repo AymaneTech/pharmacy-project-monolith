@@ -3,6 +3,7 @@ package com.aymanetech.event.user.domain.entity;
 import com.aymanetech.event.user.domain.vo.Name;
 import com.aymanetech.event.user.domain.vo.Timestamp;
 import com.aymanetech.event.user.domain.vo.UserId;
+import com.aymanetech.event.user.domain.vo.UserStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,6 +41,9 @@ public class User implements UserDetails, Serializable {
 
     @ManyToOne
     private Role role;
+
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

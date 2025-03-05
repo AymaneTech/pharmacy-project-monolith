@@ -1,5 +1,6 @@
-package com.aymanetech.event.common.application.validation;
+package com.aymanetech.event.common.application.validation.validator;
 
+import com.aymanetech.event.common.application.validation.UniqueField;
 import jakarta.persistence.EntityManager;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
