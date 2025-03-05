@@ -1,0 +1,4 @@
+CREATE TYPE user_status AS ENUM ('ACTIVE', 'PENDING', 'BANNED');
+
+ALTER TABLE users
+    ADD COLUMN status user_status NOT NULL DEFAULT 'PENDING';
