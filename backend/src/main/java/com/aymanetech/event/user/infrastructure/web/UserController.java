@@ -1,6 +1,7 @@
 package com.aymanetech.event.user.infrastructure.web;
 
-import com.aymanetech.event.user.application.dto.request.UserRequestDto;
+import com.aymanetech.event.user.application.dto.request.RegisterNewUserRequestDto;
+import com.aymanetech.event.user.application.dto.request.UpdateUserRequestDto;
 import com.aymanetech.event.user.application.dto.response.UserResponseDto;
 import com.aymanetech.event.user.application.service.UserService;
 import com.aymanetech.event.user.domain.vo.UserId;
@@ -27,7 +28,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponseDto> updateUser(@PathVariable Integer id, @RequestBody UserRequestDto dto) {
+    public ResponseEntity<UserResponseDto> updateUser(@PathVariable Integer id, @RequestBody UpdateUserRequestDto dto) {
         UserResponseDto user = userService.updateUser(UserId.of(id), dto);
         return ResponseEntity.ok(user);
     }
