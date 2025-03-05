@@ -37,7 +37,7 @@ public class Event {
 
     private String location;
 
-    private Boolean isVerified;
+    private Boolean isVerified = false;
 
     @Enumerated(EnumType.STRING)
     private BookingType bookingType;
