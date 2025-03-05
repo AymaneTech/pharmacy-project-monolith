@@ -2,6 +2,8 @@ FROM maven:3.9.9-eclipse-temurin-21-alpine AS maven
 
 WORKDIR /app
 
+COPY ./lombok.config ./lombok.config
+
 COPY ./pom.xml ./
 
 RUN mvn dependency:go-offline -B
