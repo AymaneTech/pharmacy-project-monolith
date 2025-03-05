@@ -1,24 +1,25 @@
 package com.aymanetech.event.common.application.validation;
 
 
-import com.aymanetech.event.common.application.validation.validator.UniqueFieldValidator;
+import com.aymanetech.event.common.application.validation.validator.ReferenceExistsValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = UniqueFieldValidator.class)
+@Constraint(validatedBy = ReferenceExistsValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UniqueField {
-    String message() default "Field must be unique";
+public @interface ReferenceExists {
+    String message() default "Given Entity Id Does Not Exists";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-    String fieldName();
+    Class<?> idClass();
 
     Class<?> entityClass();
+
 }
