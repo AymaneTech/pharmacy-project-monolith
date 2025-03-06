@@ -21,8 +21,8 @@ public class DefaultPermissionService implements PermissionService {
 
     @Override
     public PermissionResponseDto createNewPermission(final PermissionRequestDto request) {
-        final Permission permission = mapper.toEntity(request);
-        final Permission savedPermission = repository.save(permission);
+        final var permission = mapper.toEntity(request);
+        final var savedPermission = repository.save(permission);
         return mapper.toResponseDto(savedPermission);
     }
 
@@ -42,7 +42,7 @@ public class DefaultPermissionService implements PermissionService {
 
     @Override
     public PermissionResponseDto updatePermission(final PermissionId id, final PermissionRequestDto request) {
-        final Permission permission = findPermissionEntityById(id);
+        final var permission = findPermissionEntityById(id);
         mapper.updateEntity(permission, request);
         return mapper.toResponseDto(permission);
     }

@@ -21,14 +21,14 @@ public class DefaultRolePermissionService implements RolePermissionService {
 
     @Override
     public void assignPermissionToRole(final RoleId roleId, final PermissionId permissionId) {
-        final Role role = findRoleById(roleId);
-        final Permission permission = findPermissionById(roleId, permissionId);
+        final var role = findRoleById(roleId);
+        final var permission = findPermissionById(roleId, permissionId);
         role.assignPermission(permission);
     }
 
     @Override
     public void assignPermissionsToRole(RoleId roleId, List<PermissionId> permissionIds) {
-        final Role role = findRoleById(roleId);
+        final var role = findRoleById(roleId);
         permissionRepository.findAllById(permissionIds)
                 .forEach(role::assignPermission);
     }

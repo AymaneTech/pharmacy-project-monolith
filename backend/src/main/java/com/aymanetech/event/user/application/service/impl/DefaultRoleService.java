@@ -21,8 +21,8 @@ public class DefaultRoleService implements RoleService {
 
     @Override
     public RoleResponseDto createNewRole(RoleRequestDto request) {
-        final Role role = mapper.toEntity(request);
-        final Role savedRole = repository.save(role);
+        final var role = mapper.toEntity(request);
+        final var savedRole = repository.save(role);
         return mapper.toResponseDto(savedRole);
     }
 
@@ -42,7 +42,7 @@ public class DefaultRoleService implements RoleService {
 
     @Override
     public RoleResponseDto updateRole(RoleId id, RoleRequestDto request) {
-        final Role role = findRoleEntityById(id);
+        final var role = findRoleEntityById(id);
         mapper.updateEntity(role, request);
         return mapper.toResponseDto(role);
     }
