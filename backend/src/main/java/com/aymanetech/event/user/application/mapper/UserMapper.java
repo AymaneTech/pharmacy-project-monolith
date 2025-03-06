@@ -7,6 +7,7 @@ import com.aymanetech.event.user.application.dto.response.UserResponseDto;
 import com.aymanetech.event.user.domain.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(config = BaseMapper.class)
 public interface UserMapper {
@@ -19,5 +20,5 @@ public interface UserMapper {
     @Mapping(target = "lastName", source = "name.lastName")
     UserResponseDto toResponseDto(User user);
 
-    void updateEntity(User entity, UpdateUserRequestDto request);
+    void updateEntity(@MappingTarget User entity, UpdateUserRequestDto request);
 }
