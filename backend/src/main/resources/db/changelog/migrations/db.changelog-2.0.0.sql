@@ -1,11 +1,11 @@
 CREATE TABLE categories
 (
     id          BIGSERIAL PRIMARY KEY NOT NULL,
-    name        VARCHAR(255) NOT NULL,
-    slug        VARCHAR(255) NOT NULL,
-    description TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    name        VARCHAR(255) UNIQUE   NOT NULL,
+    slug        VARCHAR(255) UNIQUE   NOT NULL,
+    description TEXT                  NOT NULL,
+    created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE SEQUENCE categories_seq

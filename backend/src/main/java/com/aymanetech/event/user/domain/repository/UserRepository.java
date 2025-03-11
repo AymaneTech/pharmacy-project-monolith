@@ -16,5 +16,5 @@ public interface UserRepository extends JpaRepository<User, UserId> {
 
 
     @Query("SELECT o FROM User AS o WHERE o.id = :id AND o.role.name = :roleName AND o.status = :status")
-    Optional<User> findByIdAndRoleNameAndStatus(UserId id, String organizerRoleName, UserStatus userStatus);
+    Optional<User> findByIdAndRoleNameAndStatus(UserId id, String roleName, UserStatus status);
 }

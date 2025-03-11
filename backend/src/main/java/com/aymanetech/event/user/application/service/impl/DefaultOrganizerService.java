@@ -13,7 +13,7 @@ import static com.aymanetech.event.user.domain.vo.UserStatus.ACTIVE;
 @ApplicationService
 @RequiredArgsConstructor
 public class DefaultOrganizerService implements OrganizerService {
-    private final static String ORGANIZER_ROLE_NAME = "ROLE_ORGANIZER";
+    private static final String ORGANIZER_ROLE_NAME = "ROLE_ORGANIZER";
 
     private final UserRepository repository;
 

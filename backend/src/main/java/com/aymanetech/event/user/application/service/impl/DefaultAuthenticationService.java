@@ -21,6 +21,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import static com.aymanetech.event.user.domain.vo.UserStatus.PENDING;
+
 @ApplicationService
 @RequiredArgsConstructor
 public class DefaultAuthenticationService implements AuthenticationService {
@@ -37,7 +39,8 @@ public class DefaultAuthenticationService implements AuthenticationService {
 
         var user = mapper.toEntity(request)
                 .setPassword(passwordEncoder.encode(request.password()))
-                .setRole(defaultRole);
+                .setRole(defaultRole)
+                .setStatus(PENDING);
 
         var savedUser = repository.save(user);
         return mapper.toResponseDto(savedUser);
