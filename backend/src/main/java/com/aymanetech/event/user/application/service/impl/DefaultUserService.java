@@ -45,7 +45,6 @@ public class DefaultUserService implements UserService {
 
     @Override
     public UserResponseDto updateUser(UserId id, UpdateUserRequestDto request) {
-        // todo: use another dto for this to ignore password here
         var user = findUserEntityById(id);
         var role = roleService.findRoleEntityById(RoleId.of(request.roleId()));
 

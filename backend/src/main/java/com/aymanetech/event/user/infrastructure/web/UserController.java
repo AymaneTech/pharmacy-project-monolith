@@ -1,6 +1,5 @@
 package com.aymanetech.event.user.infrastructure.web;
 
-import com.aymanetech.event.user.application.dto.request.RegisterNewUserRequestDto;
 import com.aymanetech.event.user.application.dto.request.UpdateUserRequestDto;
 import com.aymanetech.event.user.application.dto.response.UserResponseDto;
 import com.aymanetech.event.user.application.service.UserService;

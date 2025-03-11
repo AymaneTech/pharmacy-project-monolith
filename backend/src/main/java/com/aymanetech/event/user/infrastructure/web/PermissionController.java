@@ -11,16 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.List;
 
+import static com.aymanetech.event.common.util.UriUtil.getUri;
+import static com.aymanetech.event.user.infrastructure.web.PermissionController.BASE_URL;
+
 @RestController
-@RequestMapping("/api/v1/permissions")
+@RequestMapping(BASE_URL)
 @RequiredArgsConstructor
 public class PermissionController {
+    public final static String BASE_URL = "/api/v1/permissions";
     private final PermissionService permissionService;
 
     @PostMapping
     public ResponseEntity<PermissionResponseDto> createPermission(@RequestBody PermissionRequestDto dto) {
         PermissionResponseDto permission = permissionService.createNewPermission(dto);
-        return ResponseEntity.created(getUri(permission))
+        return ResponseEntity.created(getUri(BASE_URL, permission.id()))
                 .body(permission);
     }
 
@@ -44,9 +48,5 @@ public class PermissionController {
     public ResponseEntity<Void> deletePermission(@PathVariable Long id) {
         permissionService.deletePermission(PermissionId.of(id));
         return ResponseEntity.noContent().build();
-    }
-
-    private URI getUri(PermissionResponseDto permission) {
-        return URI.create("/api/v1/permissions/" + permission.id());
     }
 }
