@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record CategoryResponseDto(@NotNull Long id,
                                   @NotBlank String name,
+                                  @NotBlank String description,
                                   @NotBlank String slug) {
 }
 // todo: why not to add here list of nested events
