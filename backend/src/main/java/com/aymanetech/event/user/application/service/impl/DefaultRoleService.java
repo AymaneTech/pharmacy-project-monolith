@@ -58,4 +58,10 @@ public class DefaultRoleService implements RoleService {
         return repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Role", id.value()));
     }
+
+    @Override
+    public Role findRoleByName(String name) {
+        return repository.findByName(name)
+                .orElseThrow(() -> new ResourceNotFoundException("No role with " + name + " found"));
+    }
 }

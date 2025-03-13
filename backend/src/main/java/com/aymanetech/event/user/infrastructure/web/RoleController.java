@@ -11,16 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.List;
 
+import static com.aymanetech.event.common.util.UriUtil.getUri;
+import static com.aymanetech.event.user.infrastructure.web.RoleController.BASE_URL;
+
 @RestController
-@RequestMapping("/api/v1/roles")
+@RequestMapping(BASE_URL)
 @RequiredArgsConstructor
 public class RoleController {
+    public static final String BASE_URL = "/api/v1/roles";
     private final RoleService roleService;
 
     @PostMapping
     public ResponseEntity<RoleResponseDto> createRole(@RequestBody RoleRequestDto dto) {
         RoleResponseDto role = roleService.createNewRole(dto);
-        return ResponseEntity.created(getUri(role))
+        return ResponseEntity.created(getUri(BASE_URL, role.id()))
                 .body(role);
     }
 
@@ -44,9 +48,5 @@ public class RoleController {
     public ResponseEntity<Void> deleteRole(@PathVariable Long id) {
         roleService.deleteRole(RoleId.of(id));
         return ResponseEntity.noContent().build();
-    }
-
-    private URI getUri(RoleResponseDto role) {
-        return URI.create("/api/v1/roles/" + role.id());
     }
 }

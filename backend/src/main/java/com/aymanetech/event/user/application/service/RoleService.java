@@ -20,4 +20,6 @@ public interface RoleService {
     void deleteRole(RoleId id);
 
     Role findRoleEntityById(RoleId id);
+
+    Role findRoleByName(String role);
 }
