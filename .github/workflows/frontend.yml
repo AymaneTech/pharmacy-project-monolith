@@ -35,15 +35,26 @@ jobs:
           cd client
           npm run lint
 
+<<<<<<< HEAD
       #      - name: Run unit tests
       #        run: |
       #          cd client
       #          npm test --watch=false --browsers=ChromeHeadless
+=======
+#      - name: Run unit tests
+#        run: |
+#          cd client
+#          npm test --watch=false --browsers=ChromeHeadless
+>>>>>>> 1de262c (update workflow to fix errors)
 
       - name: Build angular app
         run: |
           cd client
+<<<<<<< HEAD
           npm run build
+=======
+          npm run build 
+>>>>>>> 1de262c (update workflow to fix errors)
 
       - name: Push docker image
         uses: mr-smithers-excellent/docker-build-push@v5
